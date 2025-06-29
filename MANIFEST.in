@@ -1,0 +1,11 @@
+include README.md
+include requirements.txt
+include config.yaml
+include install.py
+recursive-include examples *.py
+recursive-include knowledge_base *.md
+global-exclude *.pyc
+global-exclude __pycache__
+global-exclude *.egg-info
+global-exclude venv
+global-exclude output 

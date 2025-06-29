@@ -1,0 +1,56 @@
+# Web Scraping Configuration Template
+# This file contains all the settings needed for web scraping
+
+# Basic Configuration
+url: "https://example.com"
+output_format: "csv"  # Options: json, csv, excel
+wait_time: 2000  # Milliseconds to wait after page load
+
+# Browser Settings
+headless: true
+slow_mo: 100  # Delay between actions in milliseconds
+
+# CSS Selectors for Data Extraction
+selectors:
+  title: "h1"
+  price: "span.price"
+  description: "div.description"
+  rating: "span.rating"
+
+# Infinite Scroll Configuration (optional)
+infinite_scroll: false
+max_scrolls: 10
+scroll_delay: 2000
+
+# Multi-page Configuration (optional)
+multi_page: false
+pagination_selector: "a.next-page"
+max_pages: 5
+
+# Custom Function Configuration (optional)
+# Uncomment to use custom extraction function
+# custom_function: "infinite_scroll_extract"
+
+# Login Configuration (for sites requiring authentication)
+login:
+  username: ""
+  password: ""
+  username_selector: "#username"
+  password_selector: "#password"
+  submit_selector: "button[type='submit']"
+
+# Item-specific selectors (for infinite scroll scenarios)
+item_selector: "div.item"
+item_selectors:
+  title: "h3.title"
+  price: "span.price"
+  link: "a.link"
+
+# Rate Limiting
+rate_limit:
+  requests_per_minute: 60
+  delay_between_requests: 1000
+
+# Screenshot Settings
+take_screenshot: true
+screenshot_filename: "debug_screenshot.png" 

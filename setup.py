@@ -6,10 +6,11 @@ Setup script for Web Scraping Template
 from setuptools import setup, find_packages
 
 setup(
-    name="web-scraping-template",
+    name="web_scraping_template",
     version="1.0.0",
     description="A reusable, configurable web scraping template with Playwright.",
     author="thoni-dev",
+    url="https://github.com/thoni-miguel/web-scraping-template",
     packages=find_packages(),
     install_requires=[
         "playwright>=1.42.0",

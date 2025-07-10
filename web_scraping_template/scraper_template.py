@@ -253,6 +253,40 @@ class WebScraper:
         await self.page.screenshot(path=str(filepath))
         logger.info(f"Screenshot saved to {filepath}")
 
+    async def navigate(
+        self,
+        url: str,
+        wait_time: int = 2000,
+        take_screenshot: bool = False,
+        screenshot_name: str = "navigation_screenshot.png",
+    ) -> Page:
+        """
+        Simple method to navigate to a URL without configuration overhead.
+
+        Args:
+            url: The URL to navigate to
+            wait_time: Time to wait after navigation (milliseconds)
+            take_screenshot: Whether to take a screenshot after navigation
+            screenshot_name: Name for the screenshot file if taking one
+
+        Returns:
+            The page object for further interaction
+        """
+        if not self.page:
+            raise RuntimeError(
+                "Browser not started. Use 'async with WebScraper()' or call start() first."
+            )
+
+        logger.info(f"Navigating to {url}")
+        await self.page.goto(url, wait_until="networkidle")
+        await self.page.wait_for_timeout(wait_time)
+
+        if take_screenshot:
+            await self.take_screenshot(screenshot_name)
+
+        logger.info(f"Successfully navigated to {url}")
+        return self.page
+
 
 # Example custom extraction functions
 async def infinite_scroll_extract(scraper: WebScraper, config: Dict[str, Any]) -> Any:
